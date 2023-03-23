@@ -1,0 +1,6 @@
+用户表（int id(key 自增), varchar nickname, varchar password, int onlinestate, bigint money, varchar address, varchar detail, date logintime）
+管理员表(int id(key 自增), varchar nickname, varchar password,  int onlinestate, int prio, date logintime)
+商品表(int id(key 自增), varchar name, varchar type, int state,varchar detail, int price, int number, date creattime)
+分类表(int id(key 自增), var typename, varchar typedetail, int state, date creattime)
+购买记录表(int id(key 自增), int userid, int goodsid, int number, int price, int expressid, int state, var address, var detail, date creattime)
+物流记录表()
