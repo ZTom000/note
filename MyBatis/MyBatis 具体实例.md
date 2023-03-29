@@ -89,3 +89,63 @@
         VALUES (#{name}, #{createTime})
     </insert>
 ```
+
+## 3. 查询结果映射
+
+### 3.1. 1 对 1
+
+### 3.2. 1 对多
+
+- 类说明
+
+```java
+// entity.java
+public class Entity {
+    private Integer id;
+    private List<Entity2> list;
+}
+
+// entity.java
+public class Entity2 {
+    private Integer id;
+    private String detail;
+}
+
+
+// mapper.java
+@Mapper
+public interface EntityDao {
+    public List<Entity> getEntityList();
+}
+```
+
+```xml
+<!-- EntityMapper.xml -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pageketname.dao.EntityDao">
+    <resultMap id="entity_result" type="pageketname.entity.Entity">
+        <id property="id" column="id"/>
+        <!-- 1 对 多使用 <collection> 标签 -->
+        <collection property="list" ofType="pageketname.entity.Entity2"
+            resultMap="pageketname.dao.Entity2Dao.entity2_result"/>
+    </resultMap>
+    <select id="getEntityList" resultMap="entity_result">
+    </select
+</mapper>
+
+<!-- Entity2Mapper.xml -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pageketname.dao.Entity2Dao">
+    <resultMap id="entity2_result" type="pageketname.entity.Entity2">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+</mapper>
+
+```
+
+### 3.3. 多对多
