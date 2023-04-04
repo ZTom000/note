@@ -145,7 +145,6 @@ public interface EntityDao {
         <result property="name" column="name"/>
     </resultMap>
 </mapper>
-
 ```
 
 ### 3.3. 多对多

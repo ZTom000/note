@@ -171,3 +171,7 @@ SET @addr = (SELECT addr FROM table1)
 #### 2.3.1. PIVOT() 函数
 
 说明：行变列转换函数
+
+```sql
+-- 使用方法
+```
