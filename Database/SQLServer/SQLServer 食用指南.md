@@ -170,8 +170,25 @@ SET @addr = (SELECT addr FROM table1)
 
 #### 2.3.1. PIVOT() 函数
 
-说明：行变列转换函数
+说明：可以使用 `PIVOT` 和 `UNPIVOT` 关系运算符将表值表达式更改为另一个表。 `PIVOT` 通过将表达式中的一个列的唯一值转换为输出中的多列，来轮替表值表达式。 `PIVOT` 在需要对最终输出所需的所有剩余列值执行聚合时运行聚合。 与 PIVOT 执行的操作相反，`UNPIVOT` 将表值表达式的列轮换为列值。
 
 ```sql
 -- 使用方法
+SELECT <non-pivoted column>,  
+    [first pivoted column] AS <column name>,  
+    [second pivoted column] AS <column name>,  
+    ...  
+    [last pivoted column] AS <column name>  
+FROM  
+    (<SELECT query that produces the data>)   
+    AS <alias for the source query>  
+PIVOT  
+(  
+    <aggregation function>(<column being aggregated>)  
+FOR   
+[<column that contains the values that will become column headers>]   
+    IN ( [first pivoted column], [second pivoted column],  
+    ... [last pivoted column])  
+) AS <alias for the pivot table>  
+<optional ORDER BY clause>;  
 ```
