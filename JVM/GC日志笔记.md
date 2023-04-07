@@ -1,6 +1,6 @@
 # GC 日志笔记
 
-[toc]
+[TOC]
 
 ## 1. GC Log
 
@@ -43,7 +43,6 @@ CommandLine flags: -XX:-BytecodeVerificationLocal -XX:-BytecodeVerificationRemot
 2021-09-10T11:18:20.857+0800: 1.125: [Full GC (Metadata GC Threshold) [PSYoungGen: 10215K->0K(75264K)] [ParOldGen: 24K->9782K(119808K)] 10239K->9782K(195072K), [Metaspace: 20670K->20669K(1067008K)], 0.0428625 secs] [Times: user=0.05 sys=0.02, real=0.04 secs] 
 2021-09-10T11:18:21.307+0800: 1.577: [GC (Allocation Failure) [PSYoungGen: 64512K->6657K(75264K)] 74294K->16512K(195072K), 0.0053440 secs] [Times: user=0.00 sys=0.02, real=0.01 secs] 
 2021-09-10T11:18:21.666+0800: 1.934: [GC (Allocation Failure) [PSYoungGen: 71169K->9969K(93696K)] 81024K->19832K(213504K), 0.0068206 secs] [Times: user=0.09 sys=0.02, real=0.01 secs] 
-
 ```
 
 ### 1.2.1  详细日志
@@ -86,6 +85,3 @@ CommandLine flags: -XX:-BytecodeVerificationLocal -XX:-BytecodeVerificationRemot
  Metaspace       used 15330K, capacity 15856K, committed 16000K, reserved 1062912K
  class space    used 1960K, capacity 2094K, committed 2176K, reserved 1048576K
 ```
-
-
-
