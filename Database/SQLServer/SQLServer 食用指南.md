@@ -79,7 +79,7 @@ CREATE TYPE table_name AS TABLE (
 ```sql
 CREATE PROCEDURE [dbo].[procedure_name]
 @var1 NVARCHAR(50) INPUT,
-@var2 INT OUTPU
+@var2 INT OUTPUT
 
 AS
 BEGIN
@@ -191,4 +191,17 @@ FOR
     ... [last pivoted column])  
 ) AS <alias for the pivot table>  
 <optional ORDER BY clause>;  
+```
+
+#### 2.3.2. WAITFOR() 函数
+
+示例：
+
+```sql
+-- 延时执行
+WAITFOR DELAY 'hh:mm:ss'
+PRINT 'hello'
+-- 定时执行
+WAITFOR TIME 'hh:mm:ss'
+PRINT 'hello'
 ```
