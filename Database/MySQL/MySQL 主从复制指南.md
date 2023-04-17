@@ -35,3 +35,11 @@ replicate-do-db = databasename
 ```
 
 - 重启服务
+
+## 3. 指令
+
+### 3.1. 查看 Slave 服务器信息
+
+```shell
+show slave STATUS \G;
+```
