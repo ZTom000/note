@@ -205,3 +205,9 @@ PRINT 'hello'
 WAITFOR TIME 'hh:mm:ss'
 PRINT 'hello'
 ```
+
+#### 2.3.3 ISNULL() 函数
+
+```sql
+
+```
