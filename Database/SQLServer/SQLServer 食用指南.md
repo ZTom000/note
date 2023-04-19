@@ -103,7 +103,7 @@ BEGIN
 END
 ```
 
-#### 2.2.2. 方法
+#### 2.2.2. 函数
 
 ```sql
 CREATE FUNCTION [dbo].[function_name]
@@ -121,6 +121,20 @@ BEGIN
     RETURN @Result
 END
 ```
+
+#### 2.2.3. 事务
+
+1. 事务使用
+   
+   ```sql
+   
+   ```
+
+2. 在存储过程中使用事务
+   
+   ```sql
+   
+   ```
 
 ### 2.3. 变量使用
 
@@ -206,8 +220,25 @@ WAITFOR TIME 'hh:mm:ss'
 PRINT 'hello'
 ```
 
-#### 2.3.3 ISNULL() 函数
+#### 2.3.3. ISNULL() 函数
+
+说明：判断指定值 `value` 为 NULL 时替换为特定值 `instandValue` 。
+
+注意：当 SQL 中使用 `GROUP BY` 时，`SELECT` 选中多个列显示时该函数会失效。（具体情况待排查）
+
+示例：
 
 ```sql
+ISNULL(value, instandValue)
+```
 
+### 2.3. 库控制
+
+#### 2.3.1. 设置数据库 UTF-8 编码
+
+```sql
+CREATE DATABASE databasename COLLATE Chinese_PRC_CI_AS
+GO
+ALTER DATABASE databasename COLLATE Chinese_PRC_CI_AS
+GO
 ```
