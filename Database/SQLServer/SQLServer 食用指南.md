@@ -180,9 +180,9 @@ SET @addr = (SELECT addr FROM table1)
 
 - 需要注意的是，SELECT 也可以将标量子查询的值赋给变量，如果标量子查询不返回值，则变量被置为 NULL 值。   此时与使用 SET 赋值是完全相同的。
 
-### 2.3. 常用函数
+### 2.4. 常用函数
 
-#### 2.3.1. PIVOT() 函数
+#### 2.4.1. PIVOT() 函数
 
 说明：可以使用 `PIVOT` 和 `UNPIVOT` 关系运算符将表值表达式更改为另一个表。 `PIVOT` 通过将表达式中的一个列的唯一值转换为输出中的多列，来轮替表值表达式。 `PIVOT` 在需要对最终输出所需的所有剩余列值执行聚合时运行聚合。 与 PIVOT 执行的操作相反，`UNPIVOT` 将表值表达式的列轮换为列值。
 
@@ -207,7 +207,7 @@ FOR
 <optional ORDER BY clause>;  
 ```
 
-#### 2.3.2. WAITFOR() 函数
+#### 2.4.2. WAITFOR() 函数
 
 示例：
 
@@ -220,7 +220,7 @@ WAITFOR TIME 'hh:mm:ss'
 PRINT 'hello'
 ```
 
-#### 2.3.3. ISNULL() 函数
+#### 2.4.3. ISNULL() 函数
 
 说明：判断指定值 `value` 为 NULL 时替换为特定值 `instandValue` 。
 
@@ -232,13 +232,32 @@ PRINT 'hello'
 ISNULL(value, instandValue)
 ```
 
-### 2.3. 库控制
+### 2.5. 库控制
 
-#### 2.3.1. 设置数据库 UTF-8 编码
+#### 2.5.1. 设置数据库 UTF-8 编码
 
 ```sql
+-- 示例
 CREATE DATABASE databasename COLLATE Chinese_PRC_CI_AS
 GO
 ALTER DATABASE databasename COLLATE Chinese_PRC_CI_AS
 GO
+```
+
+### 2.6. SQL 高级用法
+
+#### 2.6.1. ORDER BY 分页
+
+说明：分页使用必须在 `ORDER BY` 里面使用；
+
+            `OFFSET` 项后面设置跳过的页数。
+
+            `FETCH NEXT` 项后面设置每页显示的行数。
+
+```sql
+-- 示例
+SELECT *
+FROM table t
+-- 说明： 必须带有 ORDER BY 列名 X 为 offset 偏移位即跳过前 X 页， Y 为页显示行数
+ORDER BY col OFFSET x ROWS FETCH NEXT Y ROWS ONLY
 ```
