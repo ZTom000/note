@@ -127,13 +127,39 @@ END
 1. 事务使用
    
    ```sql
-   
+   -- 示例
+   BEGIN TRANSACTION 
+   SAVE TRANSACTION transactionName
+   -- dosomething
+   COMMIT TRANSACTION transactionName;
+   ROLLBACK TRANSACTION transactionName;
    ```
 
 2. 在存储过程中使用事务
    
    ```sql
+   -- 声明事务控制变量
+   DECLARE @ExistTrancount INT
+   -- 事务控制变量赋值
+   SELECT @ExistTrancount = @@trancount    
+   -- 若当前已存在事务 (事务传递) 则保存当前事务信息，否则创建新事务
+   IF @ExistTrancount > 0 
+       SAVE TRANSACTION TranProc
+   ELSE    
+       BEGIN TRANSACTION 
    
+   -- dosomething
+   
+   IF @@error <> 0
+   GOTO ERROR
+   
+   -- 若当前事务无异常则提交事务
+   IF @ExistTrancount = 0
+       COMMIT TRANSACTION TranProc
+   
+   -- 事务回滚逻辑
+   ERROR: 
+       ROLLBACK TRANSACTION TranProc
    ```
 
 ### 2.3. 变量使用
@@ -259,5 +285,7 @@ GO
 SELECT *
 FROM table t
 -- 说明： 必须带有 ORDER BY 列名 X 为 offset 偏移位即跳过前 X 页， Y 为页显示行数
-ORDER BY col OFFSET x ROWS FETCH NEXT Y ROWS ONLY
+ORDER BY col 
+OFFSET x ROWS 
+FETCH NEXT Y ROWS ONLY
 ```
