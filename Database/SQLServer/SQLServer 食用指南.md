@@ -258,6 +258,20 @@ PRINT 'hello'
 ISNULL(value, instandValue)
 ```
 
+#### 2.4.4. STUFF() 函数
+
+说明：删除指定长度的字符，并在指定的起点处插入另一组字符。
+
+Str1：一个字符数据表达式。
+
+start：整型，指定删除和插入的开始位置。若 start 为负，则返回空字符串。若 start 比 Str1 长度的值大，则返回空字符串。
+
+length：整型，指定删除的字符数。若 length 比 Str1 长度的值大则删除到 Str1 最后一个字符。
+
+```sql
+STUFF(Str1, start, length, Str2)
+```
+
 ### 2.5. 库控制
 
 #### 2.5.1. 设置数据库 UTF-8 编码
