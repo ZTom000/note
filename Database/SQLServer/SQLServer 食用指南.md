@@ -272,6 +272,24 @@ length：整型，指定删除的字符数。若 length 比 Str1 长度的值大
 STUFF(Str1, start, length, Str2)
 ```
 
+#### 2.4.5. FOR XML PATH() 函数
+
+#### 2.4.6. CONVERT() 函数
+
+说明：CONVERT() 函数是 SQLServer 中的类型转换函数
+
+其中：
+
+      `datatype`表示转换后的数据类型，例如`DATETIME` 、`VARCHAR` 、`INT`
+
+      `expression` 表示转换的表达式。
+
+      `style` 是可选的，表示转换后的格式。
+
+```sql
+CONVERT(datatype, expression [, style])
+```
+
 ### 2.5. 库控制
 
 #### 2.5.1. 设置数据库 UTF-8 编码
