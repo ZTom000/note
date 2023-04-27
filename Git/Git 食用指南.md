@@ -12,7 +12,7 @@ git config --global user.mail "ztmooN@qq.com"
 
 ### 1.2. 上传与拉取 git 项目代码
 
-``` shell
+```shell
 # 上传代码
 # 1. 添加所有已修改文件
 git add ./
@@ -26,7 +26,5 @@ git pull
 ```
 
 ### 1.3. 解决版本冲突
-
-
 
 ### 1.4. 分支管理
