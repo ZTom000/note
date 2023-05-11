@@ -290,6 +290,13 @@ STUFF(Str1, start, length, Str2)
 CONVERT(datatype, expression [, style])
 ```
 
+示例：
+
+```sql
+# datetime2 转 nvarchar 格式为'YYYY-mm-DD hh:MM:ss'
+CONVERT(nvarchar(19), datecol, 120)
+```
+
 ### 2.5. 库控制
 
 #### 2.5.1. 设置数据库 UTF-8 编码
