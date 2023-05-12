@@ -70,6 +70,26 @@ CREATE TYPE table_name AS TABLE (
 )
 ```
 
+#### 2.1.6 表类型使用
+
+```sql
+-- 表类型操作
+-- 当不存在表类型时创建表类型		
+IF TYPE_ID(N'dbo.table_type') IS NULL
+BEGIN
+	-- 表类型存在，执行相应的操作
+	CREATE TYPE [dbo].[table_type] AS TABLE (
+		tableVar1 INT NULL, 
+		tableVar2 INT NULL
+	);
+END
+-- 删除表类型
+DROP TYPE dbo.table_type; 
+
+-- 使用表类型
+DECLARE @table table_type
+```
+
 ### 2.2. SQL 编程
 
 #### 2.2.1. 存储过程
@@ -102,6 +122,46 @@ BEGIN
    END
 END
 ```
+
+2. 表类型的表变量在存储过程中的使用方式
+   
+   ```sql
+   -- 表类型操作
+   -- 当不存在表类型时创建表类型		
+   IF TYPE_ID(N'dbo.table_type') IS NULL
+   BEGIN
+   	-- 表类型存在，执行相应的操作
+   	CREATE TYPE [dbo].[table_type] AS TABLE (
+   		tableVar1 INT NULL, 
+   		tableVar2 INT NULL
+   	);
+   END
+   -- 删除表类型
+   DROP TYPE dbo.table_type; 
+   
+   -- 表类型使用
+   CREATE PROCEDURE [dbo].[procedure_name]
+   @var1 NVARCHAR(50) INPUT,
+   @varTable AS table_type READONLY
+   
+   
+   AS
+   BEGIN
+     DECLARE @var3 INT 
+   
+     SET @var3 = 0
+     -- DOSOMETHING 
+   
+     IF @var3 IS NULL 
+       BEGIN
+         RETURN 0
+       END
+     ELSE 
+       BEGIN 
+         RETURN @Sequence
+      END
+   END
+   ```
 
 #### 2.2.2. 函数
 
@@ -295,6 +355,18 @@ CONVERT(datatype, expression [, style])
 ```sql
 # datetime2 转 nvarchar 格式为'YYYY-mm-DD hh:MM:ss'
 CONVERT(nvarchar(19), datecol, 120)
+
+# 获取当天时间
+BETWEEN CONVERT(date, GETDATE())
+AND CONVERT(date, DATEADD(DAY, 1, GETDATE()))
+```
+
+#### 2.4.7. GETDATE() 函数
+
+获取当前时间
+
+```sql
+GETDATE()
 ```
 
 ### 2.5. 库控制
