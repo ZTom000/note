@@ -74,14 +74,14 @@ CREATE TYPE table_name AS TABLE (
 
 ```sql
 -- 表类型操作
--- 当不存在表类型时创建表类型		
+-- 当不存在表类型时创建表类型        
 IF TYPE_ID(N'dbo.table_type') IS NULL
 BEGIN
-	-- 表类型存在，执行相应的操作
-	CREATE TYPE [dbo].[table_type] AS TABLE (
-		tableVar1 INT NULL, 
-		tableVar2 INT NULL
-	);
+    -- 表类型存在，执行相应的操作
+    CREATE TYPE [dbo].[table_type] AS TABLE (
+        tableVar1 INT NULL, 
+        tableVar2 INT NULL
+    );
 END
 -- 删除表类型
 DROP TYPE dbo.table_type; 
@@ -127,14 +127,14 @@ END
    
    ```sql
    -- 表类型操作
-   -- 当不存在表类型时创建表类型		
+   -- 当不存在表类型时创建表类型        
    IF TYPE_ID(N'dbo.table_type') IS NULL
    BEGIN
-   	-- 表类型存在，执行相应的操作
-   	CREATE TYPE [dbo].[table_type] AS TABLE (
-   		tableVar1 INT NULL, 
-   		tableVar2 INT NULL
-   	);
+       -- 表类型存在，执行相应的操作
+       CREATE TYPE [dbo].[table_type] AS TABLE (
+           tableVar1 INT NULL, 
+           tableVar2 INT NULL
+       );
    END
    -- 删除表类型
    DROP TYPE dbo.table_type; 
@@ -143,23 +143,21 @@ END
    CREATE PROCEDURE [dbo].[procedure_name]
    @var1 NVARCHAR(50) INPUT,
    @varTable AS table_type READONLY
-   
-   
    AS
    BEGIN
-     DECLARE @var3 INT 
+     DECLARE @var3 INT
    
      SET @var3 = 0
-     -- DOSOMETHING 
+    -- DOSOMETHING 
    
      IF @var3 IS NULL 
-       BEGIN
-         RETURN 0
-       END
+     BEGIN
+       RETURN 0
+     END
      ELSE 
-       BEGIN 
-         RETURN @Sequence
-      END
+     BEGIN 
+       RETURN @Sequence
+     END
    END
    ```
 
@@ -174,11 +172,11 @@ CREATE FUNCTION [dbo].[function_name]
 RETURNS NVARCHAR(300) -- 返回值
 AS
 BEGIN
-    DECLARE @Result NVARCHAR(300)
+ DECLARE @Result NVARCHAR(300)
 
-    -- DOSOMETHING
+ -- DOSOMETHING
 
-    RETURN @Result
+ RETURN @Result
 END
 ```
 
@@ -400,3 +398,31 @@ ORDER BY col
 OFFSET x ROWS 
 FETCH NEXT Y ROWS ONLY
 ```
+
+## 3. 并发操作
+
+### 3.1. 锁
+
+#### 3.1.1. 锁类型
+
+- 意向锁：
+  
+  - IS：
+  
+  - IX：
+
+- 共享锁
+  
+  - S:
+
+- 排他锁
+  
+  - X:
+
+#### 3.1.2. 锁粒度
+
+- 表锁: 
+
+- 行锁: 
+
+#### 3.1.3. 锁操作
