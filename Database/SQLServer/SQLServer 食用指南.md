@@ -332,9 +332,9 @@ STUFF(Str1, start, length, Str2)
 
 #### 2.4.5. FOR XML PATH() 函数
 
-#### 2.4.6. CONVERT() 函数
+#### 2.4.6. CONVERT() 函数 与 TRY_CONVERT() 函数
 
-说明：CONVERT() 函数是 SQLServer 中的类型转换函数
+`CONVERT()` 函数说明：`CONVERT()` 函数是 SQLServer 中的类型转换函数
 
 其中：
 
@@ -359,12 +359,54 @@ BETWEEN CONVERT(date, GETDATE())
 AND CONVERT(date, DATEADD(DAY, 1, GETDATE()))
 ```
 
+`TRY_CONVERT()` 函数说明: 执行时会先判断是否可以转换为指定类型，若可以转换则返回转换值，否则返回 `NULL`
+
+示例：
+
+```sql
+TRY_CONVERT(INT, '0xff') -- 返回 NULL
+TRY_CONVERT(INT, 'abc')  -- 返回 NULL
+TRY_CONVERT(INT, '123')  -- 返回 123
+```
+
 #### 2.4.7. GETDATE() 函数
 
 获取当前时间
 
 ```sql
 GETDATE()
+```
+
+#### 2.4.8. ISNUMERIC() 函数
+
+```sql
+-- 判断传出参数是否为数字，如果是则返回 1 ,否则返回 0
+DECLARE @val NVARCHAR(20) = 'a' -- 返回 0
+SET @val = '123' -- 返回 1
+SET @val = '0xffffff' -- 返回 1
+DECLARE @num INT = 123 -- 返回 0
+
+ISNUMERIC(@val)
+```
+
+#### 2.4.9. CAST() 与 TRY_CAST() 函数
+
+`CAST()` 函数说明: 类型转换为指定类型
+
+示例：
+
+```sql
+CAST(val AS VARCHAR)
+```
+
+`TRY_CAST()` 函数说明: 类型转换前先判定能否转换，若可以转换则返回转换值，若不可以转换则返回 `NULL`
+
+示例：
+
+```sql
+TRY_CAST('123' AS INT) -- 返回 123
+TRY_CAST('ABC' AS VARCHAR) -- 返回 NULL
+TRY_CAST('0xFF' AS VARCHAR) -- 返回 NULL
 ```
 
 ### 2.5. 库控制
