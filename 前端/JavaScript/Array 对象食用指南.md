@@ -15,6 +15,27 @@ array1.forEach((element, index) => {
 })
 ```
 
+### 1.2. Array.from()
+
+作用：将对象作为数组返回
+
+```js
+// 示例
+Array.from(obj) // 将对象 obj 作为数组返回 
+```
+
+### 1.3. Array.prototype.filter()
+
+说明：`filter()`实现对数组每个元素做过滤处理并返回到新数组中
+
+```js
+const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+// filter 实现过滤的方法，数组内每个元素均执行一次，根据结果返回 result 数组中
+const result = words.filter(word => word.length > 6);
+
+console.log(result);
+```
+
 ## 2. 运算符
 
 ### 2.1. param1?param2:param3
@@ -52,6 +73,4 @@ function example() {
         : value4;
 }
 // 等价于
-
-
 ```

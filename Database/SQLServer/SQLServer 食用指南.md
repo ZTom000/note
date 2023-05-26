@@ -409,6 +409,16 @@ TRY_CAST('ABC' AS VARCHAR) -- 返回 NULL
 TRY_CAST('0xFF' AS VARCHAR) -- 返回 NULL
 ```
 
+#### 2.4.10. COALESCE() 函数
+
+说明：判断值是否为 N/A 
+
+示例：
+
+```sql
+COALESCE(value, res)    -- 判断当前值 value 是否为 N/A 当为空时返回 res
+```
+
 ### 2.5. 库控制
 
 #### 2.5.1. 设置数据库 UTF-8 编码
