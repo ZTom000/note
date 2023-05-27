@@ -86,4 +86,14 @@ service remove
 
 3. 点击新建出站规则
 
+![](D:\files\note\应用部署\Windows%20环境\images\firewallsetting01.png)
 
+![](D:\files\note\应用部署\Windows%20环境\images\firewallsetting02.png)
+
+![](D:\files\note\应用部署\Windows%20环境\images\firewallsetting03.png)
+
+![](D:\files\note\应用部署\Windows%20环境\images\firewallsetting04.png)
+
+![](D:\files\note\应用部署\Windows%20环境\images\firewallsetting05.png)
+
+![](D:\files\note\应用部署\Windows%20环境\images\firewallsetting06.png)
