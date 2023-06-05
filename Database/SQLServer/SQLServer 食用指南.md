@@ -419,6 +419,44 @@ TRY_CAST('0xFF' AS VARCHAR) -- 返回 NULL
 COALESCE(value, res)    -- 判断当前值 value 是否为 N/A 当为空时返回 res
 ```
 
+#### 2.4.11 OPENQUERY() 函数
+
+说明：使用 `OPENQUERY()` 函数，在 MSSM 里面设置远程连接数据库服务器后，可以实现跨服务器远程访问。
+
+示例：
+
+```sql
+-- 基本用法
+OPENQUERY(link_name, sql)
+
+-- 查询
+SELECT * FROM OPENQUERY(link_name, sql)
+
+-- 动态查询
+DECLARE @exec_query NVARCHAR(MAX) = 
+'SELECT * FROM OPENQUERY(link_name, SELECT * FROM link_table_name WHERE id = ''' + 
+CAST(id AS VARCHAR(50)) + ''')'
+EXEC(@exec_query)
+
+-- 插入操作
+INSERT INTO OPENQUERY(link_name, 
+    SELECT val1, val2, val3 FROM link_table_name
+) VALUES (val1, val2, val3,)
+
+-- 更新操作
+UPDATE OPENQUERY(link_name, 'SELECT val1 FROM link_table_name') 
+SET val1 = 'val1'
+
+-- 删除操作
+DELETE OPENQUERY(link_name, 'SELECT val1 FROM link_table_name') 
+WHERE val1  IN (1,3)
+```
+
+**注意：** 无法在触发器里使用，若在触发器中使用会报如下错误。
+
+> [42000] [Microsoft][SQL Server Native Client 11.0][SQL Server]无法执行该操作，因为链接服务器 "mysql_7024" 的 OLE DB 访问接口 "MSDASQL" 无法启动分布式事务。 (7391)
+> [01000] [Microsoft][SQL Server Native Client 11.0][SQL Server]链接服务器"mysql_7024"的 OLE DB 访问接口 "MSDASQL" 返回了消息 "[MySQL][ODBC 8.0(w) Driver]Optional feature not supported"。 (7412)`
+
 ### 2.5. 库控制
 
 #### 2.5.1. 设置数据库 UTF-8 编码
@@ -449,6 +487,33 @@ FROM table t
 ORDER BY col 
 OFFSET x ROWS 
 FETCH NEXT Y ROWS ONLY
+```
+
+### 2.7. 触发器
+
+#### 2.7.1. DML 触发器
+
+说明：触发器是一个特殊的存储过程，同一个表的同一个操作可以定义多个触发器。
+
+示例：
+
+```sql
+CREATE TRIGGER trigger_name
+FROM table_name
+FOR | AFTER | INSTEAD OF | [INSERT, DELETE, UPDATE] -- 监控表的操作
+AS 
+BEGIN
+    -- 获取插入数据
+    SELECT * 
+    FROM inserted
+    -- 获取删除数据
+    SELECT *
+    FROM deleted
+
+    SELECT * 
+    FROM updated
+    -- do something
+END
 ```
 
 ## 3. 并发操作
