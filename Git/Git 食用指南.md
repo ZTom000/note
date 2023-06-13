@@ -42,3 +42,16 @@ git reset --soft HEAD^
 # 修改 commit 注释
 git commit --amend
 ```
+
+### 1.6. 远程仓库管理
+
+```shell
+# 查看远程仓库
+git remote -v
+
+# 添加远程仓库
+git remote add name url
+
+# 删除远程仓库
+git remote remove name
+```
