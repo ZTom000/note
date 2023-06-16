@@ -20,12 +20,16 @@ git add ./
 git commit -m "commitName"
 # 3. 上传
 git push
-
 # 拉取代码
 git pull
 ```
 
 ### 1.3. 解决版本冲突
+
+```shell
+# 查看版本代码差异
+git diff 
+```
 
 ### 1.4. 分支管理
 
@@ -38,9 +42,14 @@ git pull
 `--hard` 删除工作空间的改动代码,撤销`commit`且撤销`add`
 
 ```shell
+# 撤销 commit 
 git reset --soft HEAD^
 # 修改 commit 注释
 git commit --amend
+# 撤销 commit && add
+git reset --hard HEAD^
+# 撤销操作到指定版本
+git reset --hard commitid
 ```
 
 ### 1.6. 远程仓库管理
