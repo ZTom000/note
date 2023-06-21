@@ -36,6 +36,32 @@ const result = words.filter(word => word.length > 6);
 console.log(result);
 ```
 
+### 1.4. Array.prototype.sort()
+
+说明:
+
+```javascript
+// 基础类型数组
+const v[] = [0, 10, 9, 5, 8, 13]
+v.sort();
+
+const s[] = ['abc', 'eas', 'qwe']
+s.sort();
+// 对象数组
+const obj[] = [
+    {'id': 10, 'name': 'a'}, 
+    {'id': 1, 'name': 'b'}, 
+    {'id': 2, 'name': 'c'}
+]
+obj.sort((a, b) -> {
+    if(a.id > b.id){
+        return -1;
+    } else {
+    return 1
+    }
+});
+```
+
 ## 2. 运算符
 
 ### 2.1. param1?param2:param3

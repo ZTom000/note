@@ -1,8 +1,8 @@
 # Spring Bean
 
-[toc]
+[TOC]
 
- ## 1. Bean 
+## 1. Bean
 
 ### 1.1. Bean 定义
 
@@ -12,47 +12,46 @@
 
 <table>
     <tr>
-    	<th>属性</th>
-    	<th>描述</th>
+        <th>属性</th>
+        <th>描述</th>
     </tr>
     <tr>
-    	<td>class</td>
-    	<td>这个属性是强制性的，并且指定用来创建 Bean 的 Bean 类。</td>
+        <td>class</td>
+        <td>这个属性是强制性的，并且指定用来创建 Bean 的 Bean 类。</td>
     </tr>
     <tr>
-    	<td>name</td>
-    	<td>这个属性指定唯一的 Bean 标识符。在基于 XML 的配置元数据中，你可以使用 ID 和/或 name 属性来指定 Bean 标识符。</td>
+        <td>name</td>
+        <td>这个属性指定唯一的 Bean 标识符。在基于 XML 的配置元数据中，你可以使用 ID 和/或 name 属性来指定 Bean 标识符。</td>
     </tr>
     <tr>
-    	<td>scope</td>
-    	<td>这个属性指定由特定的 Bean 定义创建的对象的作用域，它将会在 Bean 作用域的章节中进行讨论。</td>
+        <td>scope</td>
+        <td>这个属性指定由特定的 Bean 定义创建的对象的作用域，它将会在 Bean 作用域的章节中进行讨论。</td>
     </tr>
     <tr>
-    	<td>constructor-arg</td>
-    	<td>/</td>
+        <td>constructor-arg</td>
+        <td>/</td>
     </tr>
     <tr>
-    	<td>properties</td>
-    	<td>/</td>
+        <td>properties</td>
+        <td>/</td>
     </tr>
     <tr>
-    	<td>autowiring mode</td>
-    	<td>/</td>
+        <td>autowiring mode</td>
+        <td>/</td>
     </tr>
     <tr>
-    	<td>lazy-initialization mode</td>
-    	<td>延迟初始化的 bean 告诉 IoC 容器在它第一次被请求时，而不是在启动时去创建一个 bean 实例。</td>
+        <td>lazy-initialization mode</td>
+        <td>延迟初始化的 bean 告诉 IoC 容器在它第一次被请求时，而不是在启动时去创建一个 bean 实例。</td>
     </tr>
     <tr>
-    	<td>initialization</td>
-    	<td> 在 Bean 的所有必需的属性被容器设置之后，调用回调方法。它将会在 Bean 的生命周期章节中进行讨论。</td>
+        <td>initialization</td>
+        <td> 在 Bean 的所有必需的属性被容器设置之后，调用回调方法。它将会在 Bean 的生命周期章节中进行讨论。</td>
     </tr>
     <tr>
-    	<td>destruction</td>
-    	<td>当包含该 Bean 的容器被销毁时，使用回调方法。它将会在 Bean 的生命周期章节中进行讨论。</td>
+        <td>destruction</td>
+        <td>当包含该 Bean 的容器被销毁时，使用回调方法。它将会在 Bean 的生命周期章节中进行讨论。</td>
     </tr>
 </table>
-
 
 ### 1.3. Bean 的作用域
 
@@ -66,31 +65,30 @@
         <th>描述</th>
     </tr>
     <tr>
-    	<td>singleton</td>
+        <td>singleton</td>
         <td>在Spring IoC容器仅存在一个 Bean 实例，Bean 以单例方式存在，默认值</td>
     </tr>
     <tr>
-    	<td>prototype</td>
+        <td>prototype</td>
         <td>每次从容器中调用Bean时，都返回一个新的实例，即每次调用getBean()时，相当于执行newXxxBean()</td>
     </tr>    
     <tr>
-    	<td>request</td>
+        <td>request</td>
         <td>每次HTTP请求都会创建一个新的Bean，该作用域仅适用于WebApplicationContext环境</td>
     </tr>    
     <tr>
-    	<td>session</td>
+        <td>session</td>
         <td>同一个HTTP Session共享一个Bean，不同Session使用不同的Bean，仅适用于WebApplicationContext环境</td>
     </tr>    
     <tr>
-    	<td>global-session</td>
+        <td>global-session</td>
         <td>一般用于Portlet应用环境，该作用域仅适用于WebApplicationContext环境</td>
     </tr>
 </table>
 
-
 **示例：**
 
-``` xml
+```xml
 <!-- A bean definition with singleton scope -->
 <bean id="..." class="..." scope="singleton">
     <!-- collaborators and configuration for this bean go here -->
@@ -124,7 +122,7 @@ Spring Bean 生命周期的4个阶段：
 
 ![Spring Bean 生命周期](D:\flies\Spring\images\spring-bean-生命周期01.jpg)
 
-**步骤：**	
+**步骤：**    
 
 1. Spring 启动，查找并加载需要被 Spring 管理的 Bean，进行 Bean 的实例化。
 2. Bean 实例化后对将 Bean 的引入和值注入到 Bean 的属性中。
@@ -183,7 +181,7 @@ Spring Bean 生命周期的4个阶段：
 
 **用法：**自定义`BeanPostProcesso` 接口实现类，实现 `BeanPostProcesso` 接口 `BeanPostProcessor.postProcessBeforeInitialization(Object object, String beanName)` 和 `BeanPostProcessor.postProcessAfterInitialization(Object object, String beanName)`，注意命名要准确。否则会出现： `“ The type InitHelloWorld must implement the inherited  abstract method  BeanPostProcessor.postProcessBeforeInitialization(Object, String) ”`之类的错误。
 
-``` java
+```java
 // 出处 https://www.w3cschool.cn/wkspring/xs181ici.html
 package com.tutorialspoint;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -208,3 +206,20 @@ public class InitHelloWorld implements BeanPostProcessor {
 
 **定义：**你可以创建一个 Bean 定义模板，不需要花太多功夫它就可以被其他子 bean 定义使用。在定义一个 Bean 定义模板时，你不应该指定**类**的属性，而应该指定带 **true** 值的**抽象**属性。
 
+## 5. 获取 Bean
+
+### 5.1. @Autowired
+
+说明：`@Autowired` 注解是 Spring 原生注解。
+
+### 5.2. @Resource
+
+说明：`@Resource` 注解是 javax 包内自带注解，是 Java 的增强功能。
+
+### 5.3. ApplicationContext.getBean() 方法
+
+
+
+```java
+applicationContext.getBean(YourClass.class);
+```
