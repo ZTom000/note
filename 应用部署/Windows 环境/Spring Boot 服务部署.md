@@ -26,12 +26,12 @@
 
 ```xml
 <service>
-	<id>service-name</id>
-	<name>service-name</name>
-	<description>service-name description</description>
-	<executable>java</executable>
-	<arguments>-jar service-name.jar</arguments>
-	<logmode>rotate</logmode>
+    <id>service-name</id>
+    <name>service-name</name>
+    <description>service-name description</description>
+    <executable>java</executable>
+    <arguments>-jar service-name.jar</arguments>
+    <logmode>rotate</logmode>
 </service>
 ```
 

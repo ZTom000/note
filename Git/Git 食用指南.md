@@ -33,6 +33,25 @@ git diff
 
 ### 1.4. 分支管理
 
+```shell
+# 添加远程分支
+git remote add origin/branch_name url
+
+# 查看本地分支
+git branch
+
+# 创建本地分支
+git branch -d branch_name
+
+# 删除本地分支
+git branch -D branch_name
+
+# 切换本地分支
+git checkout -b local_branch_name remote_branch_name
+# 本地切换分支失败时，可尝试先更新远程分支
+git remote update origin --prune
+```
+
 ### 1.5. 撤销提交
 
 说明：`HEAD^` 表示上一个版本,如果撤销两次`commit`则可以使用`HEAD~2`
@@ -64,3 +83,9 @@ git remote add name url
 # 删除远程仓库
 git remote remove name
 ```
+
+### 1.7. 版本控制
+
+### 1.7.1 Release 版本
+
+### 1.7.2 Tags
