@@ -89,3 +89,22 @@ git remote remove name
 ### 1.7.1 Release 版本
 
 ### 1.7.2 Tags
+
+### 1.8. GIT 主分支同步到其他分支
+
+```shell
+# 将本地项目切换到主分支
+git checkout main 
+
+# 拉取远程项目最新的代码
+git pull
+
+# 切换到自己的分支
+git checkout dev
+
+# 将 main 主分支的代码合并到 dev 分支上
+git merge main
+
+# 将主分支代码推送到远程分支
+git push origin dev
+```
