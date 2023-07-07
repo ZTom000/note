@@ -69,6 +69,11 @@ git commit --amend
 git reset --hard HEAD^
 # 撤销操作到指定版本
 git reset --hard commitid
+##########################################################################
+# 查看 commit 记录
+git reflog
+# 撤销到指定版本 commit 
+git reset --hard commit_id
 ```
 
 ### 1.6. 远程仓库管理
