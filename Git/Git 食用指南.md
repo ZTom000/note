@@ -98,6 +98,9 @@ git remote remove name
 ### 1.8. GIT 主分支同步到其他分支
 
 ```shell
+# 将远程分支同步到本地分支
+git checkout -b dev origin/dev
+
 # 将本地项目切换到主分支
 git checkout main 
 
