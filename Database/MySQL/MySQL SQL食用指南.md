@@ -1,6 +1,6 @@
 # MySQL SQL 食用指南
 
-[toc]
+[TOC]
 
 ## 1. 常用 SQL
 
