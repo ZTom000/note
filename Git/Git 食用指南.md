@@ -129,7 +129,7 @@ git fetch origin
 git checkout branch_name
 ```
 
-### 1.8.3. GIT 删除当前分支下的文件夹并上传到远程分支
+#### 1.8.3. GIT 删除当前分支下的文件夹并上传到远程分支
 
 ```shell
 # 删除当前分支指定文件夹
