@@ -40,5 +40,9 @@
    - 在 Project Structure 中设置 Artifacts 设置 Output directory 中的路径指向 target文件夹
    
    - 在 Available Elements 选项中选中项目文件夹， 右键 Put into Output Root
-     
-     
+
+注意事项：
+
+- 当 Libraries 没有 maven 依赖时需要重新加载 maven 项目。
+
+- 当 module 出问题时首先要在 Setting 里面的 Maven 选项卡里的 Runner 选项勾选 Delegate IDE build/run actions to Maven 选项。然后在 Project Structure 的 Facets 选项卡下找到 fix 按钮，修复 module。 

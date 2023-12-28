@@ -141,3 +141,14 @@ git commit -m "details"
 # 上传到远程分支
 git push
 ```
+
+#### 1.8.4. GIT 删除本地分支与远程分支
+
+```shell
+# 删除本地分支
+git branch -d branchname 
+# 删除远程分支
+git push origin --delete branchname 
+# 同步本地分支列表
+git fetch -p
+```
