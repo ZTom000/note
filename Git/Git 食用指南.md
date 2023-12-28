@@ -91,11 +91,13 @@ git remote remove name
 
 ### 1.7. 版本控制
 
-### 1.7.1 Release 版本
+#### 1.7.1 Release 版本
 
-### 1.7.2 Tags
+#### 1.7.2 Tags
 
-### 1.8. GIT 主分支同步到其他分支
+### 1.8. 分支操作
+
+#### 1.8.1. GIT 主分支同步到其他分支
 
 ```shell
 # 将远程分支同步到本地分支
@@ -115,4 +117,27 @@ git merge main
 
 # 将主分支代码推送到远程分支
 git push origin dev
+```
+
+#### 1.8.2. GIT 同步远程分支到本地
+
+```shell
+# 拉取远程仓库的所有分支
+git fetch origin
+
+# 切换分支
+git checkout branch_name
+```
+
+### 1.8.3. GIT 删除当前分支下的文件夹并上传到远程分支
+
+```shell
+# 删除当前分支指定文件夹
+git rm filename -r -f
+
+# commit 到本地分支
+git commit -m "details"
+
+# 上传到远程分支
+git push
 ```

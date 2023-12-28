@@ -28,3 +28,17 @@
         </plugins>
     </build>
 ```
+
+## 2. IDEA环境下 Java Web 项目集成 Maven
+
+1. 编辑 pom.xml 文件
+
+2. 将项目构建为 maven 项目
+
+3. 设置配置 Tomcat Server 服务器配置
+   
+   - 在 Project Structure 中设置 Artifacts 设置 Output directory 中的路径指向 target文件夹
+   
+   - 在 Available Elements 选项中选中项目文件夹， 右键 Put into Output Root
+     
+     

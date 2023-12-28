@@ -469,6 +469,17 @@ ALTER DATABASE databasename COLLATE Chinese_PRC_CI_AS
 GO
 ```
 
+#### 2.5.2. 设置表的自增值
+
+```sql
+-- 查询当前自增数
+DBCC checkident([table_name], NORESEED);
+-- 更新当前自增数为指定值
+DBCC checkident([table_name], RESEED, 1);
+
+
+```
+
 ### 2.6. SQL 高级用法
 
 #### 2.6.1. ORDER BY 分页
