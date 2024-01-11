@@ -74,6 +74,8 @@ git reset --hard commitid
 git reflog
 # 撤销到指定版本 commit 
 git reset --hard commit_id
+# 撤销上一次 add
+git reset HEAD
 ```
 
 ### 1.6. 远程仓库管理
