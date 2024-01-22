@@ -97,6 +97,20 @@ git remote remove name
 
 #### 1.7.2 Tags
 
+```shell
+# 切换标签
+git checkout v1.0
+
+# 创建标签
+git tag tag_name
+
+# 删除标签
+git tag -d tag_name
+
+# 推送所有未上传标签
+git push origin --tags 
+```
+
 ### 1.8. 分支操作
 
 #### 1.8.1. GIT 主分支同步到其他分支
