@@ -168,3 +168,11 @@ git push origin --delete branchname
 # 同步本地分支列表
 git fetch -p
 ```
+
+useless: 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
+
+### 1.9. GIT 忽略 ESLint 校验提交
+
+```shell
+git commit --no-verify -m "commit file"
+```

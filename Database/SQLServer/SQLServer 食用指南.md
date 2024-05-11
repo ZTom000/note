@@ -476,8 +476,6 @@ GO
 DBCC checkident([table_name], NORESEED);
 -- 更新当前自增数为指定值
 DBCC checkident([table_name], RESEED, 1);
-
-
 ```
 
 ### 2.6. SQL 高级用法
