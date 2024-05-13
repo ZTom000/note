@@ -100,6 +100,8 @@
 
 ```java
 // entity.java
+// 添加序列化注解
+@JsonIgnoreProperties(value = { "handler" })
 public class Entity {
     private Integer id;
     private List<Entity2> list;
