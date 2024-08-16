@@ -38,3 +38,14 @@ GROUP BY a_id
 ```
 
 说明：其中 `DISTINCT` 关键字为去重，`ORDER BY colunm1 DESC` 是根据 `colunm1` 倒序排序,  `SEPARATOR ','` 为根据`,`分隔每个值
+
+#### 1.2.2. GROUP BY 按日期分组
+
+```sql
+SELECT date_col
+FROM test_table
+GROUP BY DATE_FORMAT(date_col,"%Y-%m-%d") 
+;
+```
+
+说明：使用 `DATE_FORMAT(col, format)` 函数进行按时间分组其中按年分组`"%Y"`,按月分组`"%Y-%m"`,按日分组 `"%Y-%m-%d"`，按时分组`"%Y-%m-%d %hh"`，按分分组`"%Y-%m-%d %hh:%MM"`，按秒分组`"%Y-%m-%d %hh:%MM:%ss"`
