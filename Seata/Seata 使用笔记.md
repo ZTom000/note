@@ -1,6 +1,6 @@
 # Seata 使用笔记
 
-[toc]
+[TOC]
 
 ## 1. 服务端使用方法
 
@@ -32,7 +32,7 @@
 
 ### 2.2. 编写服务 application.yml / bootstrap.yml
 
-``` yml
+```yml
 # 配置 seata 基本信息
 seata:
   application-id: ${spring.application.name}
@@ -53,7 +53,7 @@ seata:
       group: my-cloud
 ```
 
-### 2.3. 
+### 2.3.
 
 ## 3. TCC 模式
 
@@ -75,9 +75,4 @@ TCC模式与AT模式非常相似，每阶段都是独立事务，不同的是TCC
 
 #### 3.X.2 空回滚
 
-
-
-
-
 ### 
-
