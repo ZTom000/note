@@ -69,8 +69,10 @@ sudo vim ./server.properties
 
 ```properties
 # server.properties
-# 设置 log 目录
-log.dirs=./logs/kafka-logs
+# 配置 kafka 地址
+advertised.listeners=PLAINTEXT://10.1.46.5:9092
+# 设置 log 目录, 必须是绝对路径,否则使用自动启动服务会出现错误 cluster-id 不匹配的错误
+log.dirs=/usr/server/kafka_2.13-3.8.0/logs/kafka-logs
 ```
 
 ### 1.3. 启动 kafka
@@ -98,16 +100,79 @@ bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server local
 # > 输入要传输的消息内容
 # 使用消费者消费消息 
 bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
-
-
 ```
 
+### 1.5. 配置 kafka 自启动服务
 
+```shell
+# 进入 systemd 目录 
+cd /lib/systemd/system
+# 编辑 zookeeper.service 文件
+sudo vim zookeeper.service
 
+# 编辑 kafka.service 文件
+sudo vim kafka.service
+# 刷新 systemctl 配置
+systemctl daemon-reload
+# 配置 zookeeper
+# 启动 zookeeper服务
+systemctl start zookeeper
+# 查看 zookeeper服务 
+systemctl status zookeeper
+# 将 zookeeper服务设置为开机启动 
+systemctl enable zookeeper
+# 关闭 zookeeper服务
+systemctl stop zookeeper
+# 配置 kafka
+# 启动 kafka 服务
+systemctl start kafka
+# 查看 kafka 服务 
+systemctl status kafka 
+# 将 kafka 服务设置为开机启动 
+systemctl enable kafka
+# 关闭 kafka 服务
+systemctl stop kafka
+```
 
+kafka.service 文件: 
 
+```properties
+[Unit]
+Description=Apache Kafka Server
+After=network.target remote-fs.target zookeeper.service
 
+[Service]
+Type=forking
+User=root
+Group=root
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ExecStart= /usr/server/kafka_2.13-3.8.0/bin/kafka-server-start.sh /usr/server/kafka_2.13-3.8.0/config/server.properties
+ExecStop=/usr/server/kafka_2.13-3.8.0/bin/kafka-server-stop.sh
+Restart=on-failure
 
+[Install]
+WantedBy=multi-user.target
+```
 
+zookeeper.service 文件:
+
+```properties
+[Unit]
+Description=Apache Zookeeper Server
+After=network.target remote-fs.target
+ 
+[Service]
+Type=forking
+User=root
+Group=root
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ExecStart=/usr/server/apache-zookeeper-3.8.4-bin/bin/zkServer.sh start
+ExecStop=/usr/server/apache-zookeeper-3.8.4-bin/bin/zkServer.sh stop
+Restart=on-failure
+ 
+[Install]
+WantedBy=multi-user.target
+
+```
 
 
