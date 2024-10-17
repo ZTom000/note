@@ -115,13 +115,13 @@ sudo vim kafka.service
 # 刷新 systemctl 配置
 systemctl daemon-reload
 # 配置 zookeeper
-# 启动 zookeeper服务
+# 启动 zookeeper 服务
 systemctl start zookeeper
-# 查看 zookeeper服务 
+# 查看 zookeeper 服务 
 systemctl status zookeeper
-# 将 zookeeper服务设置为开机启动 
+# 将 zookeeper 服务设置为开机启动 
 systemctl enable zookeeper
-# 关闭 zookeeper服务
+# 关闭 zookeeper 服务
 systemctl stop zookeeper
 # 配置 kafka
 # 启动 kafka 服务
@@ -160,7 +160,7 @@ zookeeper.service 文件:
 [Unit]
 Description=Apache Zookeeper Server
 After=network.target remote-fs.target
- 
+
 [Service]
 Type=forking
 User=root
@@ -169,10 +169,7 @@ Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 ExecStart=/usr/server/apache-zookeeper-3.8.4-bin/bin/zkServer.sh start
 ExecStop=/usr/server/apache-zookeeper-3.8.4-bin/bin/zkServer.sh stop
 Restart=on-failure
- 
+
 [Install]
 WantedBy=multi-user.target
-
 ```
-
-
