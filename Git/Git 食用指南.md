@@ -176,3 +176,37 @@ useless: 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
 ```shell
 git commit --no-verify -m "commit file"
 ```
+
+### 1.10. GIT 忽略目录设置
+
+#### 1.10.1 创建  .gitignore 文件
+
+在根目录下创建 `.gitignore` 文件
+
+```shell
+vim .gitignore 
+```
+
+`.gitignore` 文件
+
+```shell
+.idea/
+/target/
+# 所有目录下的 target 文件
+**/target/
+```
+
+#### 1.10.2. 删除远程分支的指定目录
+
+说明: 当远程分支存在需要忽略的目录与文件时，需要先删除远程分支目录中原有的文件才能忽略原有文件夹
+
+```shell
+# 拉取远程分支代码
+git pull origin main
+# 删除需要忽略的远程分支代码
+git rm -r --cached .idea
+# 提交代码到远程目录
+git commit -m "set .gitignore"
+# 批量删除远程分支目录
+find . -type d -name target -exec git rm -r --cached {} +
+```

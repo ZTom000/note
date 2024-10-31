@@ -86,7 +86,8 @@ sudo ./bin/zkServer.sh status
 # 关闭 zookeeper 
 sudo ./bin/zkServer.sh stop
 # 启动 kafka
- cd ./kafka_2.13-3.8.0 sudo ./bin/kafka-server-start.sh ./config/server.properties
+cd ./kafka_2.13-3.8.0 
+sudo ./bin/kafka-server-start.sh ./config/server.properties
 /
 ```
 
@@ -142,7 +143,8 @@ Description=Apache Kafka Server
 After=network.target remote-fs.target zookeeper.service
 
 [Service]
-Type=forking
+# 当 Type=forking 失效时考虑使用 Type=simple
+Type=simple
 User=root
 Group=root
 Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
