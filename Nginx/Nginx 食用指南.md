@@ -1,6 +1,6 @@
 # nginx 食用指南
 
-[toc]
+[TOC]
 
 ## 1. nginx 命令
 
@@ -15,5 +15,3 @@
 # 有序停止 
 ./nginx -s quit
 ```
-
-

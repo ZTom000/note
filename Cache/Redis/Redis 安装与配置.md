@@ -86,7 +86,5 @@ ExecStop=redis-cli -h 127.0.0.1 -p 6379 -a root  shutdown
 Restart=on-failure
 
 [Install]
-WantedBy=multi-user.target
-
-
+WantedBy=multi-user.targetst
 ```
