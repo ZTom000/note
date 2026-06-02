@@ -175,3 +175,20 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 ```
+
+## 2. 新版启动方法
+
+```shell
+# 整个 kafka 目录归属当前用户
+sudo chown -R user:user /usr/local/kafka_2.13-4.3.0
+# 生成 uuid 
+bin/kafka-storage.sh random-uuid
+# 将 uuid 写入配置
+./bin/kafka-storage.sh format -t xxxx-uuid-xxxx -c ./config/server.properties --standalone
+# 检查 meta.properties
+cat /usr/local/kafka_2.13-4.3.0/logs/kraft-combined-logs/meta.properties
+# 运行启动脚本
+
+
+
+```
